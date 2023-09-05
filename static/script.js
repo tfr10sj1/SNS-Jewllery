@@ -1,22 +1,4 @@
 
-document.addEventListener("DOMContentLoaded", function() {
-  var productLinks = document.querySelectorAll(".product-link");
-
-  productLinks.forEach(function(link) {
-    link.addEventListener("click", function(event) {
-      event.preventDefault(); // Förhindra standard länkhantering
-
-      var productInfo = {
-        name: link.getAttribute("data-name"),
-        price: link.getAttribute("data-price"),
-        weight: link.getAttribute("data-weight"),
-        metal_type: link.getAttribute("data-metal_type")
-      };
-
-      saveProcessedImage(productInfo);
-    });
-  });
-});
 // Funktion för att gå tillbaka till startsidan när knappen klickas
 function goToHomePage() {
   window.location.href = "/templates/index.html";

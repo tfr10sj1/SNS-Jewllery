@@ -110,15 +110,45 @@
   </div>
 
   <div class="w3-center">
-    <!-- Visa produktinformation -->
-    <p id="product-name">{{ product_info.name }}</p>
+    <!-- Visa produktinformation 
+    <p id="product-name">{{ product_info.name }}</p>-->
+   
+   <h1>Produktinformation</h1>
+   <div id="product-info">
+    <p><strong>Id:</strong> <span id="id"></span></p>
+    <p><strong>Metal Type:</strong> <span id="metal-type"></span></p>
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Price:</strong> <span id="price"></span></p>
+    <p><strong>Weight:</strong> <span id="weight"></span></p>
+   </div>
+
+   <script src="processImage.js"></script>
     <button onclick="saveProcessedImage()">Spara Bearbetad Bild</button>
     <a id="download-link" style="display: none;" download="processed_image.jpg">Ladda ner bearbetad bild</a>  
   </div>
 
   <!-- Lägg till ett data-attribut för att lagra produktinformationen -->
   <div id="product-info" data-product='{{ product_info|tojson|safe }}'></div>
+  <script>
+    
+    // Hämta produktinformationen och bildfilnamnet från localStorage på processImage.html
+    var productInfo = JSON.parse(localStorage.getItem("productInfo"));
+    var imageFilename = localStorage.getItem("imageFilename");
 
+    // Visa produktinformationen på sidan
+    document.getElementById("id").textContent = productInfo.id;
+    document.getElementById("metal-type").textContent = productInfo.metal_type;
+    document.getElementById("name").textContent = productInfo.name;
+    document.getElementById("price").textContent = productInfo.price;
+    document.getElementById("weight").textContent = productInfo.weight;
+
+
+    // Nu kan du använda productInfo och imageFilename här i din processImage.html-sida
+    console.log("Produktinformation:", productInfo);
+    console.log("Bildfilnamn:", imageFilename);
+
+    // Om du vill använda dessa värden för att göra något på sidan, kan du göra det här.
+</script>
   <!-- Footer -->
   <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -130,7 +160,6 @@
     <p class="w3-medium">Powered by <a href="" target="_blank" class="w3-hover-text-green">S.J.</a></p>
   </footer>
   <script src="/static/script.js"></script>
-  <script src="/static/index.js"></script>
   <script src="/static/processimage.js"></script>
   <!-- Placera script-taggen för att sätta productInfo variabeln -->
 

@@ -33,15 +33,7 @@ const db = getFirestore(app);
 // Funktion för att hämta och visa bilder och text från Firestore och Firebase Storage
 async function getAndDisplayImages() {
   try {
-    // Initialisera din Firebase-app
-    const app = initializeApp(firebaseConfig);
-
-    // Hämta en referens till Firebase Storage
-    const storage = getStorage(app);
-
-    // Hämta en referens till Firestore-databasen
-    const db = getFirestore(app);
-
+   
     // Hämta bilder från Firestore
     const querySnapshot = await getDocs(collection(db, "webshop"));
 
@@ -92,6 +84,7 @@ async function getAndDisplayImages() {
 
       // Lägg till länken till bildbehållaren
       imageContainer.appendChild(imageLink);
+
     });
   } catch (error) {
     console.error("Error getting data from Firestore:", error);
@@ -100,8 +93,6 @@ async function getAndDisplayImages() {
 
 // Använd funktionen för att hämta och visa bilder och text
 getAndDisplayImages();
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   // Hämta alla bildlänkar
@@ -121,11 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
       // Spara produktinformationen och bildfilnamnet i localStorage
       localStorage.setItem("productInfo", JSON.stringify(productInfo));
       localStorage.setItem("imageFilename", imageFilename);
+
+      // Gå till processImage.html
+      window.location.href = "processImage.html";
     });
   });
 });
-
-
 
 // 1- Funktion för att läsa in produkter från Firestore till index.html
 async function getWebshopFromFirestore() {
