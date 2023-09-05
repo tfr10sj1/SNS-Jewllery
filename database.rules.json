@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "items": {
+      ".read": true,
+      ".write": false,
+      ".indexOn": "session_num"
+    }
+  }
+}
